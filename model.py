@@ -16,4 +16,9 @@ class Mysqldb:
 class RespAuth:
         rc:any
         message:any
-        user:User;
+        user:User
+
+class RespData:
+        rc:any
+        message:any
+        data:any;

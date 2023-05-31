@@ -1,16 +1,27 @@
 import authservice
-from authservice import *
+import model
+import trxservice
+import pandas
 
 def main () :
-    response = model.RespAuth;
-    response = authservice.auth()
+    responseAuth = model.RespAuth;
+    responseData = model.RespData;
+    responseAuth = authservice.auth()
 
-    if (response.rc == '00') :
-        response = authservice.auth()
-        print(response.message)
-    elif (response.rc == '01') :
-        print(response.message)
+
+    if (responseAuth.rc == '00') :
+        responseAuth = authservice.auth()
+        print(responseAuth.message)
+    elif (responseAuth.rc == '01') :
+        print(responseAuth.message)
+        print('======================================================================')
+        if (responseAuth.user.user_role == 'consumer') :
+            aa = trxservice.welcomeConsumer()
+        elif (responseAuth.user.user_role == 'admin') :
+            print('as admin')
+        else :
+            print('role is not identified')        
     else :
-        print(response.message)
+        print(responseAuth.message)
 
 main();

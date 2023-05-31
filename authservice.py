@@ -2,11 +2,8 @@ import getpass;
 import uuid;
 import bcrypt;
 import model
-from model import *
 import dbconnect
-from dbconnect import *
 import pprint
-from pprint import pprint
 
 def auth() :
     init = True
